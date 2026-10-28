@@ -932,7 +932,7 @@ subroutine enable_SIS_averages(time_int, time_end, diag_CS, T_to_s)
                                              !! that are offered are valid [T ~> s].
   type(time_type), intent(in)    :: time_end !< The end time of the valid interval.
   type(SIS_diag_ctrl), intent(inout) :: diag_CS  !< A structure that is used to regulate diagnostic output
-  real,  optional, intent(in)    :: T_to_s   !< A conversion factor for time_int to [s].
+  real,  optional, intent(in)    :: T_to_s   !< A conversion factor for time_int to seconds [s T-1 ~> 1].
 ! This subroutine enables the accumulation of time averages over the specified time interval.
 
   if (present(T_to_s)) then
@@ -1886,7 +1886,7 @@ end subroutine SIS_diag_mediator_init
 subroutine diag_masks_set(G, IG, missing_value, diag_cs)
   type(SIS_hor_grid_type), target, intent(in)    :: G   !< The horizontal grid type
   type(ice_grid_type),             intent(in)    :: IG  !< The sea-ice specific grid type
-  real,                            intent(in)    :: missing_value !< A fill value for missing points
+  real,                            intent(in)    :: missing_value !< A fill value for missing points [arbitrary]
   type(SIS_diag_ctrl),             intent(inout) :: diag_cs !< A structure that is used to regulate diagnostic output
 
   ! Local variables
