@@ -238,11 +238,11 @@ subroutine register_SIS_tracer_pair(ice_tr, nL_ice, name_ice, snow_tr, nL_snow, 
   type(ice_grid_type),     intent(in) :: IG  !< The sea-ice specific grid type
   real, dimension(SZI_(G),SZJ_(G),SZCAT_(IG),nL_ice), &
                    target, intent(in) :: ice_tr !<  The pointer to the ice tracer, in arbitrary
-                                               !! concentration units [Conc], and dimensions
+                                               !! concentration units [CU ~> conc], and dimensions
                                                !! of i-, j-, category, and layer.
   real, dimension(SZI_(G),SZJ_(G),SZCAT_(IG),nL_snow), &
                    target, intent(in) :: snow_tr !< The pointer to the snow tracer, in arbitrary
-                                               !! concentration units [Conc], and dimensions
+                                               !! concentration units [CU ~> conc], and dimensions
                                                !! of i-, j-, category, and layer.
   character(len=*),        intent(in) :: name_ice !< The name to be used in messages about the tracer.
   character(len=*),        intent(in) :: name_snow !< The name to be used in messages about the tracer.
@@ -511,13 +511,13 @@ subroutine add_SIS_tracer_OBC_values(name, TrReg, OBC_inflow, OBC_in_u, OBC_in_v
                            pointer    :: TrReg !< A pointer to the SIS tracer registry
   real,          optional, intent(in) :: OBC_inflow !<  The value of the tracer for all inflows via
                                              !! the open boundary conditions for which OBC_in_u or
-                                             !! OBC_in_v are not specified, in the same units as tr [Conc].
+                                             !! OBC_in_v are not specified, in the same units as tr [CU ~> conc].
   real, dimension(:,:,:), &
                  optional, pointer    :: OBC_in_u !< The value of the tracer at inflows through u-faces
-                                             !! of tracer cells, in the same units as tr [Conc].
+                                             !! of tracer cells, in the same units as tr [CU ~> conc].
   real, dimension(:,:,:), &
                  optional, pointer    :: OBC_in_v !< The value of the tracer at inflows through v-faces
-                                             !! of tracer cells, in the same units as tr [Conc].
+                                             !! of tracer cells, in the same units as tr .
 ! This subroutine adds open boundary condition concentrations for a tracer that
 ! has previously been registered by a call to register_SIS_tracer.
 

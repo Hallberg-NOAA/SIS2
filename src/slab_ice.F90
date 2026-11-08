@@ -33,10 +33,10 @@ subroutine slab_ice_advect(uc, vc, trc, stop_lim, dt_slow, G, US, part_sz, nstep
   real, dimension(SZIB_(G),SZJ_(G)), intent(in   ) :: uc  !< x-face advecting velocity [L T-1 ~> m s-1]
   real, dimension(SZI_(G),SZJB_(G)), intent(in   ) :: vc  !< y-face advecting velocity [L T-1 ~> m s-1]
   real, dimension(SZI_(G),SZJ_(G)),  intent(inout) :: trc !< Depth integrated amount of the tracer to advect,
-                                                          !! in [Conc R Z ~> Conc kg m-2] or other units, or
+                                                          !! in [CU R Z ~> Conc kg m-2] or other units, or
                                                           !! the total ice mass [R Z ~> kg m-2].
   real,                              intent(in   ) :: stop_lim !< A tracer amount below which to
-                                                          !! stop advection, in the same units as tr [Conc]
+                                                          !! stop advection, in the same units as tr [CU ~> Conc]
   real,                              intent(in   ) :: dt_slow !< The time covered by this call [T ~> s].
   type(unit_scale_type),             intent(in)    :: US  !< A structure with unit conversion factors
   real, dimension(SZI_(G),SZJ_(G)), optional, intent(out) :: part_sz !< A part size that is set based on

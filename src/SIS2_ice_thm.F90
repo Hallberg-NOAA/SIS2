@@ -1033,7 +1033,7 @@ subroutine ice_resize_SIS2(a_ice, m_pond, m_pond_ice, m_lay, Enthalpy, Sice_ther
   integer, intent(in) :: NkIce       !< The number of ice layers.
   integer, intent(in) :: npassive    !< Number of passive tracers
   real, dimension(0:NkIce+1,npassive), &
-        intent(inout) :: TrLay       !< Passive tracer slice [conc]
+        intent(inout) :: TrLay       !< Passive tracer slice [CU ~> conc]
   real, intent(  out) :: heat_to_ocn !< energy left after ice all melted [Q R Z ~> J m-2]
   real, intent(  out) :: h2o_ice_to_ocn !< liquid water flux to ocean [R Z ~> kg m-2]
   real, intent(  out) :: h2o_ocn_to_ice !< liquid water flux from ocean [R Z ~> kg m-2]
@@ -1352,7 +1352,7 @@ subroutine add_frazil_SIS2(m_lay, Enthalpy, Sice_therm, Salin, npassive, TrLay, 
         intent(inout) :: Salin       !< Conserved ice bulk salinity by layer [S ~> gSalt kg-1]
   integer, intent(in) :: npassive    !< Number of passive tracers
   real, dimension(NkIce+1,npassive), &
-        intent(inout) :: TrLay       !< Passive tracer in the column layer [Conc]
+        intent(inout) :: TrLay       !< Passive tracer in the column layer [CU ~> conc]
   real, intent(in   ) :: frazil      !< frazil in energy units [Q R Z ~> J m-2]
   real, intent(in   ) :: tfw         !< seawater freezing temperature [C ~> degC]
   integer, intent(in) :: NkIce       !< The number of ice layers.
@@ -1453,7 +1453,7 @@ subroutine rebalance_ice_layers(m_lay, mtot_ice, Enthalpy, Salin, NkIce, npassiv
   integer,                    intent(in)    :: NkIce  !< The number of ice layers.
   integer,                    intent(in)    :: npassive !< Number of passive tracers
   real, dimension(0:NkIce+1,npassive), &
-                              intent(inout) :: TrLay !< Passive tracer in the column layer [Conc]
+                              intent(inout) :: TrLay !< Passive tracer in the column layer [CU ~> conc]
 
   real, dimension(NkIce) :: mlay_new     ! New mass in a layer [R Z ~> kg m-2]
   real, dimension(NkIce) :: enth_ice_new ! New integrated enthalpy [Q R Z ~> J m-2]
